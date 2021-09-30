@@ -19,7 +19,7 @@ contract SimpleBank {
     // Fill in the visibility keyword
     // Hint: We want to create a getter function and allow contracts to be able
     //       to see if a user is enrolled.
-    mapping (address => bool) enrolled;
+    mapping (address => bool) public enrolled;
 
     // Let's make sure everyone knows who owns the bank, yes, fill in the
     // appropriate visilibility keyword
@@ -61,8 +61,9 @@ contract SimpleBank {
     /// @notice Enroll a customer with the bank
     /// @return The users enrolled status
     // Emit the appropriate event
-    function enroll() public returns (bool){
+    function enroll() public returns (bool) {
       // 1. enroll of the sender of this transaction
+      enrolled[msg.sender] = true;
     }
 
     /// @notice Deposit ether into bank
